@@ -9,88 +9,67 @@
 	<body id="home">
 
 	<!-- NavBar-->
-	<nav class="navbar-default" role="navigation">
+	<nav class="navbar-default stuckMenu isStuck" role="navigation" style="position: fixed; top: 0">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#home">Drill</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<form class="navbar-form navbar-right d-inline-block" style="width:350px;" role="search">
+			<form class="navbar-form navbar-right d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <input type="text" class="form-control" name="search" placeholder="Search Drills">
                     </div>
-
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
+                    <button type="submit" class="btn btn-primary">Go</button>
+        	</form>
 			</div>
-		   
 		</div>
-	</nav> 	
+	</nav>
 
 
-	<div id="drill-list" class="content-section-b" style="border-top: 0">
-		<div class="container">
-		<div class="row">
-		<div class="col-md-9">
-			<div class="row">
-			
+	<div class="body-wrapper">
+			<div class="col-sm-9" style="float: right;">
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
 				  <h3>Follow Me</h3>
 				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-
 				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
-				
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/picture.svg" alt="Generic placeholder image">
 				   <h3>Gallery</h3>
 				   <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				   <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
-				
+
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
 				   <h3>Retina</h3>
 					<p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
-
-				
-			</div><!-- /.row -->
-				
-			<div class="row tworow">
-			
-				<div class="col-sm-4  wow fadeInDown text-center">
-				  <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
-				  <h3>Responsive</h3>
-				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
-				
 				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/map.svg" alt="Generic placeholder image">
-				   <h3>Google</h3>
+				  <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
+				  <h3>Follow Me</h3>
+				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+				</div><!-- /.col-lg-4 -->
+				<div class="col-sm-4 wow fadeInDown text-center">
+				  <img  class="rotate" src="img/icon/picture.svg" alt="Generic placeholder image">
+				   <h3>Gallery</h3>
 				   <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				   <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
-				
-				<div class="col-sm-4	 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/browser.svg" alt="Generic placeholder image">
-				   <h3>Bootstrap</h3>
-				 <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+
+				<div class="col-sm-4 wow fadeInDown text-center">
+				  <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
+				   <h3>Retina</h3>
+					<p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
-			
-				
-			</div><!-- /.row -->
 			</div>
-			<div class="col-md-3">
-<div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
+
+			<div class="col-sm-3 profile-sidebar stuckMenu isStuck" style="position: fixed; top: 0">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
 					<img src="" class="img-responsive" alt="">
@@ -137,24 +116,12 @@
 						</li>
 					</ul>
 				</div>
-				</div>
-				<div class="col-md-9">
-           			 <div class="profile-content">
-			  			 Some user related content goes here...
-            		</div>
-				</div>
 				<!-- END MENU -->
 			</div>
-		
-			</div>
-			</div>
-		</div>
 	</div>
-</div>
 
-    <footer>
-
-    </footer>
+	<footer>
+	</footer>
 
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
@@ -167,10 +134,9 @@
 	  jQuery(function($) {
 		$(document).ready( function() {
 		  $('.navbar-default').stickUp();
-		  
+
 		});
 	  });
-	
 	</script>
 	<!-- Smoothscroll -->
 	<script type="text/javascript" src="js/jquery.corner.js"></script> 
@@ -183,3 +149,5 @@
 	<!-- Magnific Popup core JS file -->
 	<script src="js/jquery.magnific-popup.js"></script> 
 </body>
+
+</html
