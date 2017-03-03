@@ -32,7 +32,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 router.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
-  failureRedirect: '/signup',
+  failureRedirect: '/login',
   failureFlash: true,
 }));
 
@@ -56,12 +56,11 @@ router.post('/create_drill',function(req,res){
 	res.send("success");
 });
 
-router.post('/add-drill',function(req,res){
-var x=req.body;
-D.findOne({drillname:x.name},function(err,obj){
-	obj.nodes.push({week:x.week,description:x.description});
-	obj.save(function(err,doc)
-	{
+router.post('/add_node',function(req,res){
+	var x=req.body;
+	D.findOne({drillname:x.name},function(err,obj){
+		obj.nodes.push({week:x.week,description:x.description});
+		obj.save(function(err,doc){
 		res.render('drill.ejs',{drill:doc});
 	});
 });
@@ -74,6 +73,25 @@ router.get('/drill/:id',function(req,res){
 	});
 });
 
+
+//---------SEARCH SECTION-----------------------------------------------
+router.post('/search',function(req,res){
+	var key=req.body.key;
+	H.findOne({'hashname':key},function(err,obj){
+		if(err)
+		console.log(err);
+		else{
+			res.render('search_results.ejs',{drills:obj.drills});
+		}	
+	});
+});
+
+
+//----------------SUBSCRIBE---------------------------------------------
+router.post('/subscribe/:uname',function(req,res){
+	var us=req.params.uname;
+	
+});
 
 module.exports = router;
 
@@ -92,6 +110,10 @@ function addHashes(hashes,drill_id){
 				var new_hash=new H();
 				new_hash.hashname=item;
 				new_hash.drill.push(drill_id);
+				new_hash.save(function(err,obj){
+					if(err)
+					console.log(err);
+				});
 			}
 		});
 	});
