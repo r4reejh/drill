@@ -301,6 +301,10 @@ background: #6CC0FF !important;
 }
 
 /* Nav */
+.navbar-logo{
+	float: left;
+	height: 65px;
+}
 .navbar {
 	position: relative;
 	min-height: 60px;
