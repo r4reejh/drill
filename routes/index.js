@@ -71,7 +71,6 @@ router.post('/signup2',function(req,res){
 
 router.get('/profile',function(req,res){
 	res.render('profile.ejs',{user:req.user});
-	
 });
 
 router.post('/create_drill',function(req,res){
