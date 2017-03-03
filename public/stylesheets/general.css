@@ -3,6 +3,10 @@ body, html {
 	width: 100%;
 	overflow-x:hidden;
 }
+.title-primary{
+	color: #6CC0FF;
+	font-family: Arvo;
+}
 .body-wrapper{
 	margin-top: 80px;
 }

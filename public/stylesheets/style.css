@@ -1098,7 +1098,7 @@ label {
   color: #b2bcc5;
 }
 .form-control {
-  border: 2px solid #bdc3c7;
+  border: 2px solid #fff;
   color: #34495e;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -1216,7 +1216,7 @@ select[multiple].input-hg {
 }
 .has-warning .input-group-addon {
   color: #f1c40f;
-  border-color: #f1c40f;
+  border-color: #fff;
   background-color: #ffffff;
 }
 .has-error .help-block,
@@ -1985,7 +1985,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   padding: 5px 10px;
   font-size: 13px;
   line-height: 1.4;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 select.navbar-input {
   height: 35px;
@@ -2029,7 +2029,7 @@ select[multiple].navbar-input {
   padding: 5px 10px;
   font-size: 13px;
   line-height: 1.4;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 select.navbar-form .form-control,
 select.navbar-form .input-group-addon,
@@ -2063,12 +2063,12 @@ select[multiple].navbar-form .btn {
 }
 .navbar-form .form-control {
   font-size: 15px;
-  border-radius: 5px;
+  border-radius: 0px;
   display: table-cell;
 }
 .navbar-form .form-group + .btn {
   font-size: 15px;
-  border-radius: 5px;
+  border-radius: 0px;
   margin-left: 4px;
 }
 @media (max-width: 767px) {
