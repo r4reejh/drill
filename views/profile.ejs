@@ -31,14 +31,21 @@
 	</nav>
 
 
+
+
 	<div class="body-wrapper">
-			<div class="col-sm-9" style="float: right;">
-			<ul class="nav nav-pills">
-			  <li role="presentation" class="active"><a href="#" style="margin-right: 10px;">Ongoing Drills</a></li>
-			  <li role="presentation"><a href="#">My Own Drills</a></li>
-			  <li role="presentation"><a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Create Drill</a></li>
+		<div class="col-sm-9" style="float: right;">
+			<ul class="nav nav-pills" id="myTab">
+			  <li role="presentation" class="active"><a href="#ongoing-drills">Ongoing Drills</a></li>
+			  <li role="presentation"><a href="#own-drills">My Own Drills</a></li>
+			  <li role="presentation"><a href="#create-drill"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Create Drill</a></li>
 			</ul>
 			<hr style="margin-top: 10px; border-color: #DEF2FF;">
+
+		<div class="tab-content" style="border: 0">
+
+			<!-- ONGOING DRILLS SECTION -->
+			<div id="ongoing-drills" class="tab-pane fade in active">
 				<div class="col-sm-4 wow fadeInDown text-center drill-box">
 					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 					  <defs>
@@ -76,6 +83,37 @@
 				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				</div><!-- /.col-lg-4 -->
 			</div>
+
+			<!-- OWN DRILLS SECTION -->
+			<div id="own-drills" class="tab-pane fade">
+				<div class="col-sm-4 wow fadeInDown text-center drill-box">
+					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					  <defs>
+					  </defs>
+					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgrey"/>
+					</svg>
+					<h4>Marcus's <n>AI</n> Drill</h4>
+				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-sm-4 wow fadeInDown text-center drill-box">
+					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					  <defs>
+					  </defs>
+					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgreen"/>
+					</svg>
+					<h4>Marcus's <n>Networks</n> Drill</h4>
+				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+				</div><!-- /.col-lg-4 -->
+			</div>
+
+			<!-- CREATE DRILL SECTION -->
+			<div id="create-drill" class="tab-pane fade">
+				
+			</div>
+
+		</div>
+		</div>
+	</div>
 
 			<div class="col-sm-3 profile-sidebar stuckMenu isStuck text-center" style="position: fixed; top: 60px">
 				<!-- SIDEBAR USERPIC -->

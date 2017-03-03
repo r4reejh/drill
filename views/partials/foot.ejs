@@ -2,7 +2,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/owl.carousel.js"></script>
     <script src="js/script.js"></script>
@@ -24,7 +23,15 @@
   <script src="js/classie.js"></script>
   <script src="js/uiMorphingButton_inflow.js"></script>
   <!-- Magnific Popup core JS file -->
-  <script src="js/jquery.magnific-popup.js"></script> 
+  <script src="js/jquery.magnific-popup.js"></script>
+  <script type="text/javascript"> //for navbar tabs
+    $(document).ready(function(){
+        $("#myTab a").click(function(e){
+          e.preventDefault();
+          $(this).tab('show');
+        });
+    });
+  </script>
 </body>
 
 </html>
