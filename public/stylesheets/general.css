@@ -6,15 +6,21 @@ body, html {
 .body-wrapper{
 	margin-top: 80px;
 }
-nav-pills{
-	background: #d2d2ff;
+.drill-logo{
+	height: 150px;
 }
-
-/* About */
-
+.drill-box{
+	border-radius: 6px;
+}
+.drill-box:hover{
+	background: #F3FBFF;
+}
+n{
+	color: #0091EA;
+}
 /* Profile sidebar */
 .profile-sidebar {
-  height: 100%;
+  height: 90%;
   padding: 20px 0 10px 0;
   background: #F3FBFF;
 }
