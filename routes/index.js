@@ -25,7 +25,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/profile',
+  successRedirect: '/about',
   failureRedirect: '/signup',
   failureFlash: true,
 }));
@@ -41,6 +41,24 @@ router.post('/login', passport.authenticate('local-login', {
 		res.render('profile.ejs',{user:req.user.userdetails,drill:drills});
 	});
 });*/
+
+router.get('/about',isLoggedIn,function(req,res){
+	res.render('about.ejs');
+});
+
+router.post('/signup2',function(req,res){
+	var x=req.body;
+	var user_a=req.user;
+	user_a.userdetails.github=x.github;
+	user_a.userdetails.firstname=x.firstname;
+	user_a.userdetails.phno=x.phonenumber;
+	user_a.save(function(err,obj){
+		req.login(obj,function(err){
+			if(err)
+			console.log(err);
+		});
+	});
+});
 
 router.get('/profile',function(req,res){
 	res.render('profile.ejs');
@@ -110,15 +128,7 @@ router.post('/edit_node',function(req,res){
 	});
 });
 
-router.post('/signup2',function(req,res){
-var x=req.body;
-User.findOneAndUpdate({email:x.email},{$set:{'userdetails.firstname':x.firstname,'userdetails.phno':x.phonenumber,'userdetails.github':x.github}},function(err,doc){
-console.log("user details added");
-doc.save(function(err,obj2){
-					res.redirect('profile.ejs');
-				});
-});
-});
+
 
 //----------------PUBLISH-----------------------------------------------
 router.post('/publish',function(req,res){
