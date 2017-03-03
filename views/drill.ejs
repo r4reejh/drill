@@ -17,13 +17,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             <form class="navbar-form navbar-left d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
                     <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search Drills" style="width: 400px">
+                    <input type="text" class="form-control" name="key" id="key" placeholder="Search Drills" style="width: 400px">
                     </div>
-                    <button type="submit" class="btn btn-primary">Go</button>
+                    <button type="submit" id="search" class="btn btn-primary">Go</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="menuItem"><a href="/logout">Logout</a></li>
             </ul>
+
             </div>
         </div>
     </nav>
@@ -125,7 +126,7 @@
             <div class="cd-timeline-content">
                 <button data-toggle="collapse" data-target="#demo" class="btn wow tada btn-embossed btn-primary ">Add More</button>
                 <div id="demo" class="collapse">
-            <form role="add" action="/add_node" method="post" name="add" style="margin-top:10px;">
+            <form role="add"  method="post" name="add" style="margin-top:10px;">
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="input-group">
@@ -145,15 +146,15 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
 
                         </div>
-                    </div>
-                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+                    </div>                    <input type="submit" name="submit" id="add" value="Submit" class="btn wow tada btn-embossed btn-primary 
+pull-right">
                 </div>
             </form>
                 </div>
             </div>
         </div>
-    </section> <!-- cd-timeline -->
-
+  
+  </section> <!-- cd-timeline -->
 
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
@@ -182,6 +183,27 @@
     <!-- Drill Timeline -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/main.js"></script> <!-- Resource jQuery -->
+    </script>
+    <script>
+    $('#add').click(function(){
+    var descript=$('#description').val();
+    var name=$('name').val();
+    var did = <%=drill.id%>
+          $.post('/add_node',{description: descript,day: name,id:did}, function(data)
+          {
+                console.log("node added");
+          });            
+        });
+
+    $('#search').click(function(){
+
+    var keyid=$('keyid').val();
+    $.post("/search",{key:keyid},function(data)
+{
+    console.log("search performed");
+
+}); 
+});
     </script>
 <% include partials/foot %>
 </body>
