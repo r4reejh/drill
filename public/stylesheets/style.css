@@ -473,7 +473,7 @@ pre {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #16a085;
+  border-color: #0091EA;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -496,6 +496,7 @@ a.thumbnail.active {
 }
 .btn:active,
 .btn.active {
+  background: #0091EA
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -531,7 +532,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #ffffff;
-  background-color: #cacfd2;
+  background-color: #0091ea;
   border-color: #cacfd2;
 }
 .btn-default:active,
@@ -574,8 +575,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  background: #16a085;
-  border-color: #16a085;
+  background: #0091EA;
+  border-color: #0091EA;
 }
 .btn-primary.disabled,
 .btn-primary[disabled],
@@ -1915,7 +1916,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 .navbar-toggle:hover:before,
 .navbar-toggle:focus:before {
-  color: #18bc9c;
+  color: #0091ea;
 }
 .navbar-toggle .icon-bar {
   display: none;
