@@ -4,9 +4,11 @@ body, html {
 	overflow-x:hidden;
 }
 .body-wrapper{
-	margin-top: 100px;
+	margin-top: 80px;
 }
-
+nav-pills{
+	background: #d2d2ff;
+}
 
 /* About */
 

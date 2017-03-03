@@ -17,12 +17,15 @@
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-right d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
+			<form class="navbar-form navbar-left d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
                     <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search Drills">
+                    <input type="text" class="form-control" name="search" placeholder="Search Drills" style="width: 400px">
                     </div>
                     <button type="submit" class="btn btn-primary">Go</button>
         	</form>
+        	<ul class="nav navbar-nav navbar-right">
+          <li class="menuItem"><a href="#whatis">Logout</a></li>
+        </ul>
 			</div>
 		</div>
 	</nav>
@@ -30,6 +33,12 @@
 
 	<div class="body-wrapper">
 			<div class="col-sm-9" style="float: right;">
+			<ul class="nav nav-pills">
+			  <li role="presentation" class="active"><a href="#" style="margin-right: 10px;">Current Drills</a></li>
+			  <li role="presentation"><a href="#">My Drills</a></li>
+			  <li role="presentation"><a href="#">Create Drill</a></li>
+			</ul>
+			<hr>
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
 				  <h3>Follow Me</h3>
@@ -94,8 +103,7 @@
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
+					<button type="button" class="btn btn-primary">Follow</button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
