@@ -73,6 +73,7 @@ margin: auto;
 }
 
 .landing-logo{
+	min-width: 400px;
 	margin: 0 300px;
 }
 .h1_home{
