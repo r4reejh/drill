@@ -3565,6 +3565,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #000;
   border-radius: 4px;
 }
+.nav-pills > li > a:hover {
+  background: #fff;
+  color: #6CC0FF;
+  border-radius: 4px;
+}
 .nav-pills > li + li {
   margin-left: 2px;
 }
