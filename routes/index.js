@@ -66,7 +66,7 @@ router.post('/create_drill',function(req,res){
 					console.log(req.user);
 					//---------UNCOMMENT ONCE EJS AVAILABLE---------------------
 					//res.render('drill.ejs',{drill:obj});
-					res.send('success');
+					res.send(obj.id);
 				});
 			});
 	});
@@ -79,24 +79,36 @@ router.post('/create_drill',function(req,res){
 
 router.post('/add_node',function(req,res){
 	var x=req.body;
-	D.findOne({id:x.id},function(err,obj){
-		obj.nodes.push({day:x.day,description:x.description});
+	console.log(x);
+	D.findById(x.id,function(err,obj){
+		obj.nodes.push({day:x.day,description:x.description,links:x.links});
 		obj.save(function(err,doc){
-		res.render('drill.ejs',{drill:doc});
+		//res.render('drill.ejs',{drill:doc});
+		res.send("success");
 	});
 });
 });
 
 router.post('/edit_node',function(req,res){
 	var x=req.body;
-	var dayid=x.day;
-		D.findOneAndUpdate({id:x.id,'nodes.$.day': dayid},{$set: {'nodes.$.description': x.description,'nodes.$.links':x.links}},{ new: true }, function(err,doc){
-				console.log("node is updated");
-				doc.save(function(err,obj2){
-					res.render('drill.ejs',{drill:doc});
-				});
-		});
+	var dayid=x.sequence;
+	D.findById(x.id,function(err,obj){
+		var c=parseInt(dayid[dayid.length-1]);
+		try{
+			obj.nodes[c]["description"]=x.description;
+			obj.nodes[c]["links"]=x.links;
+			obj.save(function(err,doc){
+				//res.render('drill.ejs',{drill:doc});
+				res.send("success");
+			});
+		}
+		catch(err){
+			res.send("out of bounds");
+		}
+		/*console.log(obj);
+		res.send("ok");*/
 	});
+});
 
 router.post('/signup2',function(req,res){
 var x=req.body;
