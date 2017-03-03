@@ -168,6 +168,7 @@ router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
 	D.findById(id,function(err,obj){
 		res.render('drill.ejs',{drill:obj});
+		//res.json(obj);
 	});
 });
 
