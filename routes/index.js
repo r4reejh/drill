@@ -70,6 +70,19 @@ router.post('/add_node',function(req,res){
 });
 });
 
+router.post('/edit_node',function(req,res){
+	var x=req.body;
+	D.findOne({drillname:x.name},function(err,obj){
+		var weekid=x.week;
+		obj.findOneAndUpdate({week: weekid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
+				console.log("node is updated");
+				doc.save(function(err,obj2){
+				res.render('drill.ejs',{drill:doc});
+				});
+		});
+	});
+});
+
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
 	D.findOne({'id':id},function(err,obj){
@@ -77,11 +90,10 @@ router.get('/drill/:id',function(req,res){
 	});
 });
 
-
 //---------SEARCH SECTION-----------------------------------------------
 router.post('/search',function(req,res){
 	var key=req.body.key;
-	H.findOne({'hashname':key},function(err,obj){
+	H.findOne({'hashname':{$regex:key,$options:'i'}},function(err,obj){
 		if(err)
 		console.log(err);
 		else{
@@ -92,8 +104,21 @@ router.post('/search',function(req,res){
 
 
 //----------------SUBSCRIBE---------------------------------------------
-router.post('/subscribe/:drill_name',function(req,res){
-	var us=req.params.un
+router.post('/subscribe/:drill_id',function(req,res){
+	var ds=req.params.drill_name;
+	var user=req.user;
+	D.findOne({'id':us},function(err,drill){
+		user.subscribed.push(drill.id);
+		drill.subscribers.push(user.id);
+		user.save(function(err,obj){
+			if(err)
+			console.log('err');
+		});
+		user.save(function(err,obj){
+			if(err)
+			console.log('err');
+		});
+	});
 });
 
 module.exports = router;
@@ -103,21 +128,6 @@ function isLoggedIn(req, res, next) {
       return next();
   res.redirect('/');
 }
-
-router.post('/edit_node',function(req,res){
-var x=req.body;
-D.findOne({drillname:x.name},function(err,obj){
-var weekid=x.week;
- obj.findOneAndUpdate({week: weekid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
-    	console.log("node is updated");
-doc.save(function(err,obj2)
-	{
-		res.render('drill.ejs',{drill:doc});
-	});
-    });
-});
-});
-
 
 function addHashes(hashes,drill_id){
 	hashes.forEach(function(item){
