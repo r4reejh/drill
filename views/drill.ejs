@@ -46,7 +46,7 @@
 
            <% for(var i=0; i<drill.nodes.length; i++) {%>
 			<div class="cd-timeline-content">
-                <h3><%=drill.nodes[i]["day"]%></h3>
+                <h3>Day <%=drill.nodes[i]["day"]%></h3>
                 <h6><%=drill.nodes[i]["description"]%></p>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
@@ -140,6 +140,10 @@
                             Help </a>
                         </li>
                     </ul>
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-primary btn-warning">Publish Drill</button>
+                        <button type="button" class="btn btn-primary btn-warning">Start this Drill</button>
+                    </div>
                 </div>
                 <!-- END MENU -->
             </div>
