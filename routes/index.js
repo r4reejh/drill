@@ -45,10 +45,11 @@ router.get('/profile',isLoggedIn,function(req,res){
 router.post('/create_drill',function(req,res){
 	var x=req.body;
 	var new_drill=new D();
-	new_drill.drillname=x[name];
+	new_drill.drillname=x["name"];
 	new_drill.user=req.user.email;
 	new_drill.nodes.push({week:"week 1",description:x[description]});
 	new_drill.save(function(err,obj){
+			addHashes(x["hashes"],obj.id);
 			res.render('drill.ejs',{drill:obj});
 	});
 	console.log(x);
@@ -69,4 +70,18 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
       return next();
   res.redirect('/');
+}
+
+function addHashes(hashes,drill_id){
+	hashes.forEach(function(item){
+		H.findOne({'hashname':item},function(err,obj){
+			if(err)
+			console.log(err)
+			if(!user){
+				var new_hash=new H();
+				new_hash.hashname=item;
+				new_hash.drill.push(drill_id);
+			}
+		});
+	});
 }

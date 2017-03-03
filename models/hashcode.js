@@ -4,5 +4,4 @@ var hashcode=mongoose.Schema({
 	drills:[]	
 });
 
-
 module.exports=mongoose.model('hashcode',hashcode);

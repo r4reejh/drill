@@ -4,11 +4,11 @@ var drill=mongoose.Schema({
 	hashcodes:[],
 	user:String,
 	nodes:[{
-		date:Date.now(),
+		date:{type:Date,default:Date.now},
 		week:String,
 		description:String,
 		links:[]
-			}],
+	}],
 	references:[]
 });
 
