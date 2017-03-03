@@ -1,7 +1,7 @@
 /*
 Theme: Flatfy Theme
 Author: Andrea Galanti
-Bootstrap Version 
+Bootstrap Version
 Build: 1.0
 http://www.andreagalanti.it
 */
@@ -14,9 +14,9 @@ body, html {
 	overflow-x:hidden;
 }
 
-::-moz-selection{background:#1abc9c;color:white}
+::-moz-selection{background:#6CC0FF;color:white}
 
-::selection{background:#1abc9c;color:white}
+::selection{background:#6CC0FF;color:white}
 
 .abcen{position: absolute;bottom: 8%;}
 
@@ -25,7 +25,7 @@ body, html {
 .content-section-c {
 	border-top: 1px solid #32465A;
 	border-bottom: 1px solid #32465A;
-	background-color: #34495e;
+	background-color: #000;
 	padding: 90px 0;
 }
 
@@ -72,14 +72,21 @@ max-width: 250px;
 margin: auto;
 }
 
+.landing-logo{
+	margin: 0 300px;
+}
 .h1_home{
+	color: #000;
 	font-size: 80px;
 	font-family: arvo;
 	font-weight: 300;
 	letter-spacing: 6px;
 }
 
-.h3_home{font-weight: 300;}
+.h3_home{
+	font-weight: 300;
+	color: #000;
+}
 
 /*own carousel */
 
@@ -154,7 +161,6 @@ filter: alpha(opacity=95) !important;
 
 .button_down img {
 width: 50px;
-	
 }
 .btn-primary {
 	border-color: rgba(52, 73, 94, 0);
@@ -166,11 +172,11 @@ width: 50px;
 	font-size: 30px;
 	text-decoration: none;
 	list-style-type: none;
-	color: #1abc9c; 
+	color: #6CC0FF; 
 }
 
 .social > a:hover {
-	color: #1abc9c; 
+	color: #6CC0FF; 
 }
 
 .box-icon {
@@ -189,12 +195,12 @@ width: 50px;
 }
 
 .box-icon:hover {
-	background-color: #1abc9c;
+	background-color: #6CC0FF;
 	color: #fff;
 }
 
 .owl-theme .owl-controls .owl-page span {
-background: #1abc9c !important;
+background: #6CC0FF !important;
 }
 
 /* Nav */
@@ -246,7 +252,7 @@ color: #ECEBEB;
 	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
 	padding-bottom: 50px;
 	color: #f8f8f8;
-	background: url(../img/intro/intro5.jpg) no-repeat center center;
+	background: #fff no-repeat center center;
 	background-size: cover;
 	text-align: center;
 }
@@ -369,7 +375,7 @@ color: #ECEBEB;
 .content-style-form label {
 	display: block;
 	padding: 10px 0 0;
-	color: #34495e;
+	color: #000;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: bold;
@@ -507,12 +513,12 @@ color: #ECEBEB;
 }
 
 .content-style-form-4 form button {
-	background: #34495e;
+	background: #000;
 }
 
 .content-style-form-4 form button:focus,
 .content-style-form-4 form button:hover {
-	background: #1abc9c;
+	background: #6CC0FF;
 }
 
 .js .content-style-form-4 p {
@@ -894,7 +900,7 @@ color: #ECEBEB;
 
 .morph-button-inflow-1 .morph-content .morph-clone {
 	color: #FFFFFF;
-	background: #1abc9c;
+	background: #6CC0FF;
 }
 
 .morph-button-inflow-2 {
@@ -1068,7 +1074,7 @@ color: #ECEBEB;
 		    background-image: none; 
 			background-size: cover;
 			text-align: center;
-			background-color: #34495e;
+			background-color: #fff;
 		}
 		
 		h1, .h1 {
