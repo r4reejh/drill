@@ -2205,11 +2205,11 @@ select[multiple].navbar-form .btn {
   border-width: 2px;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #34495e;
+  color: #6CC0ff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #6CC0FF;
+  color: #0099EA;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
