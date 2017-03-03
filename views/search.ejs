@@ -13,15 +13,15 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<img class="navbar-logo" src="img/logo.svg">
-				<a class="navbar-brand" href="#home">Drill</a>
+				<a class="navbar-brand" href="/profile">Drill</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-left method="submit" d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
+			<form class="navbar-form navbar-left  d-inline-block" method="post" action="/search" name="search" style="width:inherit; margin-top: 4px;" role="search">
                     <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search Drills from all over the world" style="width: 400px">
+                    <input type="text" class="form-control" id="key" name="key" placeholder="Search Drills from all over the world" style="width: 400px">
                     </div>
-                    <button type="submit" id="search" class="btn btn-primary">Go</button>
+                    <input type="submit" value="Go" id="search" class="btn btn-primary">
         	</form>
         	<ul class="nav navbar-nav navbar-right">
           <li class="menuItem"><a href="/logout">Logout</a></li>
@@ -34,159 +34,25 @@
 
 
 	<div class="body-wrapper">
-		<div class="col-sm-9" style="float: right;">
-			<ul class="nav nav-pills" id="myTab">
-			  <li role="presentation" class="active"><a href="#ongoing-drills">Ongoing Drills</a></li>
-			  <li role="presentation"><a href="#own-drills">My Own Drills</a></li>
-			  <li role="presentation"><a href="#create-drill"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Create Drill</a></li>
-			</ul>
+		<div class="col-sm-12" style="float: right; padding: 0 50px;">
+			<h2 style="color: #6CC0FF">Search Results</h2>
 			<hr style="margin-top: 10px; border-color: #DEF2FF;">
-
-		<div class="tab-content" style="border: 0">
-
-			<!-- ONGOING DRILLS SECTION -->
-			<div id="ongoing-drills" class="tab-pane fade in active">
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
+			<% for(var i=0;i<hash.length;i++){%>
+			<% for(var j =0;j<hash[i].drills.length;j++){%>
+			<a href="/drill/<%=hash[i].drills[j].id%>"><div class="col-sm-4 wow fadeInDown text-center drill-box">
 					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 					  <defs>
 					  </defs>
 					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightpink"/>
 					</svg>
-					<h4>Theja's <n>WebDev</n> Drill</h4>
+					<h4><n><%=hash[i].hashname%></n> Drill</h4>
 				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightblue"/>
-					</svg>
-					<h4>Soumik's <n>NodeJS</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgrey"/>
-					</svg>
-					<h4>Yash's <n>Photoshop</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgreen"/>
-					</svg>
-					<h4>Rheejh's <n>Android</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-			</div>
+				</div><!-- /.col-lg-4 --></a>
+			<%}%>
+			<%}%>
+		
+		<div class="tab-content" style="border: 0">
 
-			<!-- OWN DRILLS SECTION -->
-			<div id="own-drills" class="tab-pane fade">
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgrey"/>
-					</svg>
-					<h4>Marcus's <n>AI</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgreen"/>
-					</svg>
-					<h4>Marcus's <n>Networks</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-			</div>
-
-			<!-- CREATE DRILL SECTION -->
-			<div id="create-drill" class="tab-pane fade">
-			<form role="add" method="post" name="add" style="margin-top:10px;">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Title" required style="border: 1px solid #6CC0FF"  >
-                            <span class="input-group-addon" style="background: #DEF2FF; border: 0;"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="hashes" name="hashes" placeholder="Tags" required style="border: 1px solid #6CC0FF"  >
-                            <span class="input-group-addon" style="background: #DEF2FF; border: 0;"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <textarea name="description" id="description" class="form-control" rows="10" required="" placeholder="Description"  style="border: 1px solid #6CC0FF"></textarea>
-                            <span class="input-group-addon" style="background: #DEF2FF; border: 0;"></span>
-                        </div>
-                    </div>
-                    <input type="submit" name="submit" id="create" value="Create Drill" class="btn wow tada btn-primary pull-right" >
-                </div>
-            </form>
-			</div>
-
-		</div>
-		</div>
-	</div>
-
-			<div class="col-sm-3 profile-sidebar stuckMenu isStuck text-center" style="position: fixed; top: 60px">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					<svg style="height: 200px;" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-					  <defs>
-					    <pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
-					      <image xlink:href="img/profile-picture.jpg" x="-25" width="150" height="100" />
-					    </pattern>
-					  </defs>
-					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img)"/>
-					</svg>
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						Marcus Doe
-					</div>
-					<div class="profile-usertitle-job">
-						Developer
-					</div>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-primary btn-warning">16 Drills</button>
-					<button type="button" class="btn btn-primary btn-success">190 Upvotes</button>
-				</div>
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
-				<div class="profile-usermenu">
-					<ul class="nav">
-						<li class="active">
-							<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-							Overview </a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-user"></i>
-							Account Settings </a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
-						</li>
-					</ul>
-				</div>
-				<!-- END MENU -->
 			</div>
 	</div>
 	<script>

@@ -51,6 +51,7 @@ router.get('/about',isLoggedIn,function(req,res){
 });
 
 router.post('/signup2',function(req,res){
+	//console.log(req.body);
 	var x=req.body;
 	var user_a=req.user;
 	user_a.userdetails.github=x.github;
@@ -63,12 +64,14 @@ router.post('/signup2',function(req,res){
 			res.redirect('/profile');
 		});
 	});
+	//res.redirect('/profile');
 });
 
 
 
 router.get('/profile',function(req,res){
 	res.render('profile.ejs',{user:req.user});
+	
 });
 
 router.post('/create_drill',function(req,res){
@@ -84,9 +87,9 @@ router.post('/create_drill',function(req,res){
 	new_drill.save(function(err,obj){
 			if(err)
 			console.log(err);
-			addHashes(hashes,obj.id);
+			addHashes(hashes,{"id":obj.id,"name":obj.drillname});
 			var user=req.user;
-			user.userdetails.drills.push(obj.id);
+			user.userdetails.drills.push({"id":obj.id,"name":obj.drillname,"user":obj.user});
 			user.save(function(err,data){
 				//USER NEEDS TO BE LOGGED IN AGAIN, TO REFLECT DATABASE UPDATES
 				req.login(user,function(err){
@@ -118,7 +121,7 @@ router.post('/add_node',function(req,res){
 
 
 
-router.post('/edit_node',function(req,res){
+/*router.post('/edit_node',function(req,res){
 	var x=req.body;
 	var dayid=x.sequence;
 	D.findById(x.id,function(err,obj){
@@ -135,12 +138,12 @@ router.post('/edit_node',function(req,res){
 			res.send("out of bounds");
 		}
 		/*console.log(obj);
-		res.send("ok");*/
+		res.send("ok");
 	});
 });
 
 //---------ADD HASH---------------------
-router.post('/addhashes',function(req,res){
+/*router.post('/addhashes',function(req,res){
 var x=req.body;
 D.findById(x.id,function(err,obj){
 var s=obj.hashecodes.push[x.hash];
@@ -149,10 +152,19 @@ addHashes(x.hash,obj.id);
 res.send("hash added");
 });
 });
-});
+});*/
 
 
 //----------------PUBLISH-----------------------------------------------
+router.get('/user/:email',function(req,res){
+	var user=req.params.email;
+	User.findOne({"email":user},function(err,doc){
+		res.render("profile.ejs",{user:doc});
+		});
+	
+	});
+
+
 router.post('/publish',function(req,res){
 	var x=req.body;
 		D.findByIdAndUpdate(x.id,{$set:{published:"TRUE"}},{new:true},function(err,doc){
@@ -180,13 +192,20 @@ router.get('/drill/:id',function(req,res){
 //---------SEARCH SECTION-----------------------------------------------
 router.post('/search',function(req,res){
 	var key=req.body.key;
+	console.log("inside");
+	console.log(key);
 	try{
 	H.find({'hashname':{$regex:key,$options:'i'}},function(err,obj){
 		if(err)
 		console.log(err);
-		else{
+		else if(obj){
 			//res.render('search_results.ejs',{drills:obj.drills});
-			res.render('search.ejs');
+			console.log(obj);
+			res.render('search.ejs',{hash:obj});
+			//res.send("test");
+		}
+		else{
+			res.render('search.ejs',{hash:[]});
 		}	
 	});
 	}
@@ -208,7 +227,7 @@ router.post('/subscribe/:drill_id',function(req,res){
 		else if(!drill)
 		res.send("invalid")
 		else if(drill.published=="TRUE"){
-			user.subscribed.push(drill.id);
+			user.subscribed.push({"id":drill.id,"name":drill.drillname});
 			drill.subscribers.push(user.id);
 			user.save(function(err,obj){
 					if(err)
@@ -238,6 +257,14 @@ function addHashes(hashes,drill_id){
 			if(!obj){
 				var new_hash=new H();
 				new_hash.hashname=item;
+				new_hash.drills.push(drill_id);
+				new_hash.save(function(err,obj){
+					if(err)
+					console.log(err);
+				});
+			}
+			else{
+				var new_hash=obj;
 				new_hash.drills.push(drill_id);
 				new_hash.save(function(err,obj){
 					if(err)

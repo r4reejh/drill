@@ -17,11 +17,11 @@
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-left method="submit" d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
+			<form class="navbar-form navbar-left d-inline-block" method="post" action="/search" name="searchform" style="width:inherit; margin-top: 4px;">
                     <div class="form-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search Drills from all over the world" style="width: 400px">
+                    <input type="text" class="form-control" name="key" id="key" placeholder="Search Drills from all over the world" style="width: 400px">
                     </div>
-                    <button type="submit" id="search" class="btn btn-primary">Go</button>
+                    <input type="submit" id="search" class="btn btn-primary" value="Go"></input>
         	</form>
         	<ul class="nav navbar-nav navbar-right">
           <li class="menuItem"><a href="/logout">Logout</a></li>
@@ -46,15 +46,19 @@
 
 			<!-- ONGOING DRILLS SECTION -->
 			<div id="ongoing-drills" class="tab-pane fade in active">
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
-					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<% if(user.subscribed.length>0){%>
+				<% for(var i=0; i<user.subscribed.length; i++) {%>
+					<div class="col-sm-4 wow fadeInDown text-center drill-box">
+					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" href="/drill/<%=user.subscribed[i].id%>">
 					  <defs>
 					  </defs>
 					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightpink"/>
 					</svg>
-					<h4>Theja's <n>WebDev</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
+					<h4><%=user.userdetails.firstname%>'s<n><user.subscribed[i].name></n> Drill</h4>
+					</div><!-- /.col-lg-4 -->
+				<% } %>
+				<% } %>
+				
 				<div class="col-sm-4 wow fadeInDown text-center drill-box">
 					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 					  <defs>
@@ -79,22 +83,34 @@
 					  </defs>
 					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgreen"/>
 					</svg>
-					<h4>Rheejh's <n>Android</n> Drill</h4>
+					<h4>Reejh's <n>Android</n> Drill</h4>
+				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-sm-4 wow fadeInDown text-center drill-box">
+					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					  <defs>
+					  </defs>
+					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgreen"/>
+					</svg>
+					<h4>Teja's <n>Machine Learning</n> Drill</h4>
 				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
 				</div><!-- /.col-lg-4 -->
 			</div>
 
 			<!-- OWN DRILLS SECTION -->
 			<div id="own-drills" class="tab-pane fade">
-				<div class="col-sm-4 wow fadeInDown text-center drill-box">
+				<% if(user.userdetails.drills.length>0){%>
+				<% for(var i=0; i<user.userdetails.drills.length; i++) {%>
+					<a href="/drill/<%=user.userdetails.drills[i].id%>"><div class="col-sm-4 wow fadeInDown text-center drill-box">
 					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 					  <defs>
 					  </defs>
 					  <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="lightgrey"/>
 					</svg>
-					<h4>Marcus's <n>AI</n> Drill</h4>
-				  <p>Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
+					<h4><%=user.userdetails.firstname%>'s <n><%=user.userdetails.drills[i].name%></n> Drill</h4>
+				</div></a><!-- /.col-lg-4 -->
+				<% } %>
+				<% } %>
 				<div class="col-sm-4 wow fadeInDown text-center drill-box">
 					<svg class="drill-logo" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 					  <defs>
