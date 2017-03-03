@@ -51,7 +51,7 @@ router.post('/create_drill',function(req,res){
 	var new_drill=new D();
 	new_drill.drillname=x["name"];
 	new_drill.user=req.user.email;
-	new_drill.nodes.push({week:"week 1",description:x[description]});
+	new_drill.nodes.push({day:"Day 1",description:x[description]});
 	new_drill.save(function(err,obj){
 			addHashes(x["hashes"],obj.id);
 			res.render('drill.ejs',{drill:obj});
@@ -62,8 +62,8 @@ router.post('/create_drill',function(req,res){
 
 router.post('/add_node',function(req,res){
 	var x=req.body;
-	D.findOne({drillname:x.name},function(err,obj){
-		obj.nodes.push({week:x.week,description:x.description});
+	D.findOne({id:x.id},function(err,obj){
+		obj.nodes.push({day:x.day,description:x.description});
 		obj.save(function(err,doc){
 		res.render('drill.ejs',{drill:doc});
 	});
@@ -72,12 +72,12 @@ router.post('/add_node',function(req,res){
 
 router.post('/edit_node',function(req,res){
 	var x=req.body;
-	D.findOne({drillname:x.name},function(err,obj){
-		var weekid=x.week;
-		obj.findOneAndUpdate({week: weekid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
+	D.findOne({id:x.id},function(err,obj){
+		var dayid=x.day;
+		obj.findOneAndUpdate({day: dayid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
 				console.log("node is updated");
 				doc.save(function(err,obj2){
-				res.render('drill.ejs',{drill:doc});
+					res.render('drill.ejs',{drill:doc});
 				});
 		});
 	});

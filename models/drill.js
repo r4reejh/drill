@@ -6,7 +6,7 @@ var drill=mongoose.Schema({
 	user:String,
 	nodes:[{
 		date:{type:Date,default:Date.now},
-		week:String,
+		day:String,
 		description:String,
 		links:[]
 	}],
