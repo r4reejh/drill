@@ -49,31 +49,18 @@ router.get('/about',isLoggedIn,function(req,res){
 router.post('/signup2',function(req,res){
 	var x=req.body;
 	var user_a=req.user;
-	var t=x.inputimage;
-	console.log(t);
-	//------ONLY FOR IMAGE----------------------------------------------
-	var fstream;
-    req.pipe(req.busboy);
-    req.busboy.on('file', function (fieldname, file, filename) {
-        console.log("Uploading: " + filename); 
-        fstream = fs.createWriteStream(__dirname + '/files/' + (user.id));
-        file.pipe(fstream);
-        fstream.on('close', function () {
-			user_a.userdetails.github=x.github;
-			user_a.userdetails.firstname=x.firstname;
-			user_a.userdetails.phno=x.phonenumber;
-			user_a.save(function(err,obj){
-				req.login(obj,function(err){
-					if(err)
-					console.log(err);
-					res.redirect('/profile');
-				});
-			});
-            
-        });
-    });
-    //------------------------------------------------------------------
+	user_a.userdetails.github=x.github;
+	user_a.userdetails.firstname=x.firstname;
+	user_a.userdetails.phno=x.phonenumber;
+	user_a.save(function(err,obj){
+		req.login(obj,function(err){
+			if(err)
+			console.log(err);
+		});
+	});
 });
+
+
 
 router.get('/profile',function(req,res){
 	res.render('profile.ejs');
@@ -170,15 +157,11 @@ router.post('/publish',function(req,res){
 		});
 });
 
-/*router.get('/drill/:id',function(req,res){
+router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
 	D.findOne({'id':id},function(err,obj){
 		res.render('drill.ejs',{drill:obj});
 	});
-});*/
-
-router.get('/drill',function(req,res){
-	res.render('drill.ejs');
 });
 
 //---------SEARCH SECTION-----------------------------------------------

@@ -17,11 +17,11 @@
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-left d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
+			<form class="navbar-form navbar-left method="submit" d-inline-block" style="width:inherit; margin-top: 4px;" role="search">
                     <div class="form-group">
                     <input type="text" class="form-control" name="search" placeholder="Search Drills from all over the world" style="width: 400px">
                     </div>
-                    <button type="submit" class="btn btn-primary">Go</button>
+                    <button type="submit" id="search" class="btn btn-primary">Go</button>
         	</form>
         	<ul class="nav navbar-nav navbar-right">
           <li class="menuItem"><a href="/logout">Logout</a></li>
@@ -108,7 +108,7 @@
 
 			<!-- CREATE DRILL SECTION -->
 			<div id="create-drill" class="tab-pane fade">
-			<form role="add" action="/add_node" method="post" name="add" style="margin-top:10px;">
+			<form role="add" method="post" name="add" style="margin-top:10px;">
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="input-group">
@@ -129,7 +129,7 @@
 
                         </div>
                     </div>
-                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+                    <input type="submit" name="submit" id="create" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
                 </div>
             </form>
 
@@ -194,5 +194,28 @@
 				<!-- END MENU -->
 			</div>
 	</div>
+	<script>
+	 $('#create').click(function(){
+    var hashes=$(#'hashes').val();
+   	var arr=hashes.split(" ");
+   	var desc=$('#description').val();
+   	var name=$('#name').val();
+   	$.post("/create_drill",{key:keyid,hashes:arr},function(data)
+{
+    console.log("search performed");
+
+}); 
+});
+    $('#search').click(function(){
+
+    var keyid=$('keyid').val();
+    $.post("/search",{key:keyid},function(data)
+{
+    console.log("search performed");
+
+}); 
+});
+
+</script>
 
 <% include partials/foot %>
