@@ -108,7 +108,34 @@
 
 			<!-- CREATE DRILL SECTION -->
 			<div id="create-drill" class="tab-pane fade">
-				
+			<form role="add" action="/add_node" method="post" name="add" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Title" required  >
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="hashes" name="hashes" placeholder="Tags" required  >
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <textarea name="description" id="description" class="form-control" rows="10" required="" placeholder="Description"></textarea>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+                </div>
+            </form>
+
+
+
+
 			</div>
 
 		</div>
