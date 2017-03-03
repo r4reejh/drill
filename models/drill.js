@@ -1,15 +1,15 @@
 var mongoose =require('mongoose');
 var drill=mongoose.Schema({
-	timelineid:String,
+	drillname:String,
 	hashcodes:[],
-	nodes:{
+	user:String;
+	nodes:[{
 		date:Date.now(),
 		week:String,
 		description:String,
 		links:[]
-			},
+			}],
 	references:[]
-
 });
 
 
