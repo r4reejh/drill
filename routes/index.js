@@ -104,6 +104,21 @@ function isLoggedIn(req, res, next) {
   res.redirect('/');
 }
 
+router.post('/edit_node',function(req,res){
+var x=req.body;
+D.findOne({drillname:x.name},function(err,obj){
+var weekid=x.week;
+ obj.findOneAndUpdate({week: weekid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
+    	console.log("node is updated");
+doc.save(function(err,obj2)
+	{
+		res.render('drill.ejs',{drill:doc});
+	});
+    });
+});
+});
+
+
 function addHashes(hashes,drill_id){
 	hashes.forEach(function(item){
 		H.findOne({'hashname':item},function(err,obj){
