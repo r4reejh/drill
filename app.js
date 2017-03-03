@@ -14,7 +14,8 @@ var session = require('express-session');
 var routes = require('./routes/index');
 
 //handling files
-var busboy = require('connect-busboy');
+//var busboy = require('connect-busboy');
+//var fileUpload = require('express-fileupload');
 
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
@@ -26,7 +27,6 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(busboy());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

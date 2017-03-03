@@ -1,11 +1,15 @@
 var express = require('express');
-var passport= require('passport')
+var passport= require('passport');
+var fs=require('fs');
 var router = express.Router();
+
+var busboy = require('connect-busboy');
+var formidable = require('formidable');
 
 var User=require('../models/user');//NOT REQUIRED YET, MAYBE REQUIRED IN FUTURE
 var D = require('../models/drill');//SCHEMA FOR TRANSACTION
 var H = require('../models/hashcode');//SCHEMA FOR IP FILTERING
-
+router.use(busboy());
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index.ejs');
@@ -56,6 +60,7 @@ router.post('/signup2',function(req,res){
 		req.login(obj,function(err){
 			if(err)
 			console.log(err);
+			res.redirect('/profile');
 		});
 	});
 });
@@ -63,11 +68,13 @@ router.post('/signup2',function(req,res){
 
 
 router.get('/profile',function(req,res){
-	res.render('profile.ejs');
+	res.render('profile.ejs',{user:req.user});
 });
 
 router.post('/create_drill',function(req,res){
+	console.log(req.body);
 	var x=req.body;
+	var hashes=x["hashes"].split(',');
 	console.log(x);
 	var new_drill=new D();
 	try{
@@ -77,7 +84,7 @@ router.post('/create_drill',function(req,res){
 	new_drill.save(function(err,obj){
 			if(err)
 			console.log(err);
-			addHashes(x["hashes"],obj.id);
+			addHashes(hashes,obj.id);
 			var user=req.user;
 			user.userdetails.drills.push(obj.id);
 			user.save(function(err,data){
@@ -86,7 +93,7 @@ router.post('/create_drill',function(req,res){
 					console.log(req.user);
 					//---------UNCOMMENT ONCE EJS AVAILABLE---------------------
 					//res.render('drill.ejs',{drill:obj});
-					res.send(obj.id);
+					res.render('drill.ejs',{drill:obj});
 				});
 			});
 	});
@@ -103,8 +110,8 @@ router.post('/add_node',function(req,res){
 	D.findById(x.id,function(err,obj){
 		obj.nodes.push({day:x.day,description:x.description,links:x.links});
 		obj.save(function(err,doc){
-		//res.render('drill.ejs',{drill:doc});
-		res.send("success");
+		res.render('drill.ejs',{drill:doc});
+		//res.send("success");
 	});
 });
 });
@@ -159,10 +166,15 @@ router.post('/publish',function(req,res){
 
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
-	D.findOne({'id':id},function(err,obj){
+	D.findById(id,function(err,obj){
 		res.render('drill.ejs',{drill:obj});
 	});
 });
+
+/*router.get('/drill',function(req,res){
+	res.render('drill.ejs');
+});*/
+
 
 //---------SEARCH SECTION-----------------------------------------------
 router.post('/search',function(req,res){

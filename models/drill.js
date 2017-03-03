@@ -8,7 +8,6 @@ var drill=mongoose.Schema({
 		date:{type:Date,default:Date.now},
 		day:String,
 		description:String,
-		links:[]
 	}],
 	subscribers:[]
 });

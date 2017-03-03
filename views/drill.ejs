@@ -136,11 +136,12 @@
             <div class="cd-timeline-content">
                 <button data-toggle="collapse" data-target="#demo" class="btn wow tada btn-primary ">Add More</button>
                 <div id="demo" class="collapse">
-            <form role="add"  method="post" name="add" style="margin-top:10px;">
+            <form role="add"  method="post" name="add" action="/add_node" style="margin-top:10px;">
                 <div class="col-md-12">
+                <input type="text" id="id" name="id" value="<%=drill.id%>" style="display:none;">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Day" required  >
+                            <input type="text" class="form-control" id="day" name="day" placeholder="Day" required  >
                             <span class="input-group-addon" style="background: #DEF2FF; border: 0"></span>
                         </div>
                     </div>
@@ -240,29 +241,5 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/main.js"></script> <!-- Resource jQuery -->
     </script>
-<<<<<<< Updated upstream
-    <script>
-    $('#add').click(function(){
-    var descript=$('#description').val();
-    var name=$('name').val();
-    var did = <%=drill.id%>
-          $.post('/add_node',{description: descript,day: name,id:did}, function(data)
-          {
-                console.log("node added");
-          });            
-        });
 
-    $('#search').click(function(){
-
-    var keyid=$('keyid').val();
-    $.post("/search",{key:keyid},function(data)
-{
-    console.log("search performed");
-
-}); 
-});
-    </script>
-=======
-
->>>>>>> Stashed changes
 <% include partials/foot %>

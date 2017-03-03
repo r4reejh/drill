@@ -108,7 +108,7 @@
 
 			<!-- CREATE DRILL SECTION -->
 			<div id="create-drill" class="tab-pane fade">
-			<form role="add" method="post" name="add" style="margin-top:10px;">
+			<form role="add" method="post" action="/create_drill" name="add" style="margin-top:10px;">
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="input-group">
@@ -153,7 +153,7 @@
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
-						Marcus Doe
+						<%=user.userdetails.firstname%>
 					</div>
 					<div class="profile-usertitle-job">
 						Developer
@@ -195,11 +195,11 @@
    	var arr=hashes.split(" ");
    	var desc=$('#description').val();
    	var name=$('#name').val();
-   	$.post("/create_drill",{key:keyid,hashes:arr},function(data)
-{
-    console.log("search performed");
-
-}); 
+   	alert(hashes+" "+desc+" "+name);
+		/*$.post("/create_drill",{name:name,hashes:arr,description:desc},function(data){
+		window.location.assign(data);
+		console.log("created");
+	});*/ 
 });
     $('#search').click(function(){
 
