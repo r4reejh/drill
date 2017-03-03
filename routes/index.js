@@ -56,6 +56,17 @@ router.post('/create_drill',function(req,res){
 	res.send("success");
 });
 
+router.post('/add-drill',function(req,res){
+var x=req.body;
+D.findOne({drillname:x.name},function(err,obj){
+	obj.nodes.push({week:x.week,description:x.description});
+	obj.save(function(err,doc)
+	{
+		res.render('drill.ejs',{drill:doc});
+	});
+});
+});
+
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
 	D.findOne({'id':id},function(err,obj){
