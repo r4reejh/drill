@@ -120,15 +120,16 @@ doc.save(function(err,obj2){
 });
 });
 
+//----------------PUBLISH-----------------------------------------------
 router.post('/publish',function(req,res){
-var x=req.body;
-D.findOneAndUpdate({id:x.id},{$set:{published:"TRUE"}},{new:true},function(err,doc){
-	console.log("drill published set to true");
-	doc.save(function(err,obj2){
-		res.render('drill.ejs',{drill:dox});
-
-	});
-	});
+	var x=req.body;
+		D.findByIdAndUpdate(x.id,{$set:{published:"TRUE"}},{new:true},function(err,doc){
+			console.log("drill published set to true");
+			doc.save(function(err,obj2){
+				//res.render('drill.ejs',{drill:dox});
+				res.send("published");
+			});
+		});
 });
 
 router.get('/drill/:id',function(req,res){
@@ -141,31 +142,44 @@ router.get('/drill/:id',function(req,res){
 //---------SEARCH SECTION-----------------------------------------------
 router.post('/search',function(req,res){
 	var key=req.body.key;
-	H.findOne({'hashname':{$regex:key,$options:'i'}},function(err,obj){
+	try{
+	H.find({'hashname':{$regex:key,$options:'i'}},function(err,obj){
 		if(err)
 		console.log(err);
 		else{
-			res.render('search_results.ejs',{drills:obj.drills});
+			//res.render('search_results.ejs',{drills:obj.drills});
+			res.send(obj);
 		}	
 	});
+	}
+	catch(err){
+		console.log(err);
+	}
+
 });
 
 
 //----------------SUBSCRIBE---------------------------------------------
 router.post('/subscribe/:drill_id',function(req,res){
-	var ds=req.params.drill_name;
+	var ds=req.params.drill_id;
 	var user=req.user;
-	D.findOne({'id':us},function(err,drill){
-		user.subscribed.push(drill.id);
-		drill.subscribers.push(user.id);
-		user.save(function(err,obj){
-			if(err)
-			console.log('err');
-		});
-		user.save(function(err,obj){
-			if(err)
-			console.log('err');
-		});
+	D.findById(ds,function(err,drill){
+		//console.log(drill);
+		if(err)
+		console.log(err);
+		else if(!drill)
+		res.send("invalid")
+		else if(drill.published=="TRUE"){
+			user.subscribed.push(drill.id);
+			drill.subscribers.push(user.id);
+			user.save(function(err,obj){
+					if(err)
+					console.log('err');
+					req.login(user,function(err){
+					res.send("success");
+				});
+			});
+		}
 	});
 });
 
