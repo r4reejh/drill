@@ -429,14 +429,12 @@ code {
   font-size: 85%;
   color: #c7254e;
   background-color: #f9f2f4;
-  border-radius: 4px;
 }
 kbd {
   padding: 2px 6px;
   font-size: 85%;
   color: #ffffff;
   background-color: #34495e;
-  border-radius: 4px;
   box-shadow: none;
 }
 pre {
@@ -486,7 +484,6 @@ a.thumbnail.active {
   font-size: 15px;
   font-weight: normal;
   line-height: 1.4;
-  border-radius: 4px;
   padding: 10px 15px;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -817,25 +814,21 @@ fieldset[disabled] .btn-link:focus {
   padding: 13px 20px;
   font-size: 22px;
   line-height: 1.227;
-  border-radius: 6px;
 }
 .btn-lg {
   padding: 10px 19px;
   font-size: 17px;
   line-height: 1.471;
-  border-radius: 6px;
 }
 .btn-sm {
   padding: 9px 13px;
   font-size: 13px;
   line-height: 1.385;
-  border-radius: 4px;
 }
 .btn-xs {
   padding: 6px 9px;
   font-size: 12px;
   line-height: 1.083;
-  border-radius: 3px;
 }
 .btn-tip {
   font-weight: 300;
@@ -869,25 +862,21 @@ fieldset[disabled] .btn-link:focus {
   padding: 6px 9px;
   font-size: 12px;
   line-height: 1.083;
-  border-radius: 3px;
 }
 .btn-group-sm > .btn {
   padding: 9px 13px;
   font-size: 13px;
   line-height: 1.385;
-  border-radius: 4px;
 }
 .btn-group-lg > .btn {
   padding: 10px 19px;
   font-size: 17px;
   line-height: 1.471;
-  border-radius: 6px;
 }
 .btn-group-gh > .btn {
   padding: 13px 20px;
   font-size: 22px;
   line-height: 1.227;
-  border-radius: 6px;
 }
 .btn-group > .btn + .btn {
   margin-left: 0;
@@ -1036,7 +1025,6 @@ fieldset[disabled] .btn-link:focus {
   margin-top: -3px;
 }
 .select .btn .dropdown-toggle {
-  border-radius: 6px;
 }
 .select .btn .dropdown-menu {
   min-width: 100%;
@@ -1117,7 +1105,6 @@ label {
   padding: 8px 12px;
   height: 42px;
   -webkit-appearance: none;
-  border-radius: 6px;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -1154,7 +1141,6 @@ fieldset[disabled] .form-control {
   padding: 6px 10px;
   font-size: 13px;
   line-height: 1.462;
-  border-radius: 6px;
 }
 select.input-sm {
   height: 35px;
@@ -1169,7 +1155,6 @@ select[multiple].input-sm {
   padding: 10px 15px;
   font-size: 17px;
   line-height: 1.235;
-  border-radius: 6px;
 }
 select.input-lg {
   height: 45px;
@@ -1184,7 +1169,6 @@ select[multiple].input-lg {
   padding: 10px 16px;
   font-size: 22px;
   line-height: 1.318;
-  border-radius: 6px;
 }
 select.input-hg {
   height: 53px;
@@ -1364,7 +1348,6 @@ select[multiple].input-hg {
   color: #b2bcc5;
   background-color: #ffffff;
   padding: 0 12px 0 0;
-  border-radius: 6px;
 }
 .input-hg + .input-icon {
   line-height: 49px;
@@ -1404,7 +1387,6 @@ fieldset[disabled] .form-control + .input-icon,
   padding: 10px 16px;
   font-size: 22px;
   line-height: 1.318;
-  border-radius: 6px;
 }
 select.input-group-hg > .form-control,
 select.input-group-hg > .input-group-addon,
@@ -1427,7 +1409,6 @@ select[multiple].input-group-hg > .input-group-btn > .btn {
   padding: 10px 15px;
   font-size: 17px;
   line-height: 1.235;
-  border-radius: 6px;
 }
 select.input-group-lg > .form-control,
 select.input-group-lg > .input-group-addon,
@@ -1450,7 +1431,6 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
   padding: 6px 10px;
   font-size: 13px;
   line-height: 1.462;
-  border-radius: 6px;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
@@ -1473,7 +1453,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-align: center;
   background-color: #bdc3c7;
   border: 1px solid #bdc3c7;
-  border-radius: 6px;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
   transition: border .25s linear, color .25s linear, background-color .25s linear;
 }
@@ -1821,7 +1800,6 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   font-size: 16px;
   min-height: 53px;
   border: none;
-  border-radius: 6px;
 }
 @media (min-width: 768px) {
   .navbar-header {
