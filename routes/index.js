@@ -63,6 +63,7 @@ router.post('/create_drill',function(req,res){
 router.post('/add_node',function(req,res){
 	var x=req.body;
 	D.findOne({id:x.id},function(err,obj){
+		obj.findOne()
 		obj.nodes.push({day:x.day,description:x.description});
 		obj.save(function(err,doc){
 		res.render('drill.ejs',{drill:doc});
@@ -72,16 +73,14 @@ router.post('/add_node',function(req,res){
 
 router.post('/edit_node',function(req,res){
 	var x=req.body;
-	D.findOne({id:x.id},function(err,obj){
-		var dayid=x.day;
-		obj.findOneAndUpdate({day: dayid},{$set: {description: x.description,links:x.links}},{ new: true }, function(err, doc){
+	var dayid=x.day;
+		D.findOneAndUpdate({id:x.id,'nodes.$.day': dayid},{$set: {'nodes.$.description': x.description,'nodes.$.links':x.links}},{ new: true }, function(err,doc){
 				console.log("node is updated");
 				doc.save(function(err,obj2){
 					res.render('drill.ejs',{drill:doc});
 				});
 		});
 	});
-});
 
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
