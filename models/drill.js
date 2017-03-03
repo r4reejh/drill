@@ -2,7 +2,7 @@ var mongoose =require('mongoose');
 var drill=mongoose.Schema({
 	drillname:String,
 	hashcodes:[],
-	user:String;
+	user:String,
 	nodes:[{
 		date:Date.now(),
 		week:String,
