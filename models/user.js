@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
 		phno:String,
 		github:String,
 		drills:[]
-	}
+	},
+	subscribed:[]
 });
 
 userSchema.methods.generateHash = function(password) {

@@ -36,10 +36,14 @@ router.post('/login', passport.authenticate('local-login', {
   failureFlash: true,
 }));
 
-router.get('/profile',isLoggedIn,function(req,res){
+/*router.get('/profile',isLoggedIn,function(req,res){
 	D.find({'user':req.user.email},function(err,drills){
 		res.render('profile.ejs',{user:req.user.userdetails,drill:drills});
 	});
+});*/
+
+router.get('/profile',function(req,res){
+	res.render('profile.ejs');
 });
 
 router.post('/create_drill',function(req,res){
@@ -88,9 +92,8 @@ router.post('/search',function(req,res){
 
 
 //----------------SUBSCRIBE---------------------------------------------
-router.post('/subscribe/:uname',function(req,res){
-	var us=req.params.uname;
-	
+router.post('/subscribe/:drill_name',function(req,res){
+	var us=req.params.un
 });
 
 module.exports = router;

@@ -9,7 +9,7 @@ var drill=mongoose.Schema({
 		description:String,
 		links:[]
 	}],
-	references:[]
+	subscribers:[]
 });
 
 
