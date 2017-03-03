@@ -80,7 +80,6 @@ router.post('/create_drill',function(req,res){
 router.post('/add_node',function(req,res){
 	var x=req.body;
 	D.findOne({id:x.id},function(err,obj){
-		obj.findOne()
 		obj.nodes.push({day:x.day,description:x.description});
 		obj.save(function(err,doc){
 		res.render('drill.ejs',{drill:doc});
@@ -98,6 +97,27 @@ router.post('/edit_node',function(req,res){
 				});
 		});
 	});
+
+router.post('/signup2',function(req,res){
+var x=req.body;
+User.findOneAndUpdate({email:x.email},{$set:{'userdetails.firstname':x.firstname,'userdetails.phno':x.phonenumber,'userdetails.github':x.github}},function(err,doc){
+console.log("user details added");
+doc.save(function(err,obj2){
+					res.redirect('profile.ejs');
+				});
+});
+});
+
+router.post('/publish',function(req,res){
+var x=req.body;
+D.findOneAndUpdate({id:x.id},{$set:{published:"TRUE"}},{new:true},function(err,doc){
+	console.log("drill published set to true");
+	doc.save(function(err,obj2){
+		res.render('drill.ejs',{drill:dox});
+
+	});
+	});
+});
 
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
