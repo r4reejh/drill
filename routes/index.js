@@ -60,6 +60,8 @@ router.post('/signup2',function(req,res){
 	});
 });
 
+
+
 router.get('/profile',function(req,res){
 	res.render('profile.ejs');
 });
@@ -107,6 +109,8 @@ router.post('/add_node',function(req,res){
 });
 });
 
+
+
 router.post('/edit_node',function(req,res){
 	var x=req.body;
 	var dayid=x.sequence;
@@ -128,6 +132,17 @@ router.post('/edit_node',function(req,res){
 	});
 });
 
+//---------ADD HASH---------------------
+router.post('/addhashes',function(req,res){
+var x=req.body;
+D.findById(x.id,function(err,obj){
+var s=obj.hashecodes.push[x.hash];
+obj.save(function(err,data){
+addHashes(x.hash,obj.id);
+res.send("hash added");
+});
+});
+});
 
 
 //----------------PUBLISH-----------------------------------------------
