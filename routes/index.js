@@ -48,17 +48,34 @@ router.get('/profile',function(req,res){
 
 router.post('/create_drill',function(req,res){
 	var x=req.body;
+	console.log(x);
 	var new_drill=new D();
+	try{
 	new_drill.drillname=x["name"];
 	new_drill.user=req.user.email;
-	new_drill.nodes.push({day:"Day 1",description:x[description]});
+	new_drill.nodes.push({day:"Day 1",description:x["description"]});
 	new_drill.save(function(err,obj){
+			if(err)
+			console.log(err);
 			addHashes(x["hashes"],obj.id);
-			res.render('drill.ejs',{drill:obj});
+			var user=req.user;
+			user.userdetails.drills.push(obj.id);
+			user.save(function(err,data){
+				//USER NEEDS TO BE LOGGED IN AGAIN, TO REFLECT DATABASE UPDATES
+				req.login(user,function(err){
+					console.log(req.user);
+					//---------UNCOMMENT ONCE EJS AVAILABLE---------------------
+					//res.render('drill.ejs',{drill:obj});
+					res.send('success');
+				});
+			});
 	});
-	console.log(x);
-	res.send("success");
+	}
+	catch(err){
+		console.log(err);
+	}
 });
+
 
 router.post('/add_node',function(req,res){
 	var x=req.body;
@@ -128,15 +145,16 @@ function isLoggedIn(req, res, next) {
   res.redirect('/');
 }
 
+//------------------INSERTS TAGS OR PUSHES DRILL IDS INTO HASHDB--------
 function addHashes(hashes,drill_id){
 	hashes.forEach(function(item){
 		H.findOne({'hashname':item},function(err,obj){
 			if(err)
 			console.log(err)
-			if(!user){
+			if(!obj){
 				var new_hash=new H();
 				new_hash.hashname=item;
-				new_hash.drill.push(drill_id);
+				new_hash.drills.push(drill_id);
 				new_hash.save(function(err,obj){
 					if(err)
 					console.log(err);
