@@ -8,9 +8,9 @@ var userSchema = mongoose.Schema({
 		firstname:String,
 		emailid:String,
 		phno:String,
-		github:String
+		github:String,
+		drills:[]
 	}
-	drills:[]
 });
 
 userSchema.methods.generateHash = function(password) {
