@@ -173,7 +173,7 @@ router.post('/search',function(req,res){
 		console.log(err);
 		else{
 			//res.render('search_results.ejs',{drills:obj.drills});
-			res.send(obj);
+			res.render('search.ejs');
 		}	
 	});
 	}
