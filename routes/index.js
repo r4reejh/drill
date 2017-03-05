@@ -2,6 +2,8 @@ var express = require('express');
 var passport= require('passport');
 var fs=require('fs');
 var router = express.Router();
+var Autolinker = require( 'autolinker' );
+var $ = require('jquery');
 
 var busboy = require('connect-busboy');
 var formidable = require('formidable');
@@ -76,6 +78,7 @@ router.get('/profile',function(req,res){
 router.post('/create_drill',function(req,res){
 	console.log(req.body);
 	var x=req.body;
+	x["description"] = Autolinker.link(x["description"]);
 	var hashes=x["hashes"].split(',');
 	console.log(x);
 	var new_drill=new D();
@@ -109,6 +112,7 @@ router.post('/create_drill',function(req,res){
 router.post('/add_node',function(req,res){
 	var x=req.body;
 	console.log(x);
+	x.description = Autolinker.link(x.description);
 	D.findById(x.id,function(err,obj){
 		obj.nodes.push({day:x.day,description:x.description,links:x.links});
 		obj.save(function(err,doc){

@@ -47,7 +47,7 @@
            <% for(var i=0; i<drill.nodes.length; i++) {%>
 			<div class="cd-timeline-content">
                 <h3><%=drill.nodes[i]["day"]%></h3>
-                <p><%=drill.nodes[i]["description"]%></p>
+                <p style="white-space: pre-wrap;"><%-drill.nodes[i]["description"]%></p>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
 
