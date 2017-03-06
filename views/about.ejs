@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="navbar-header">
 			    <img class="navbar-logo" src="img/logo.svg">
-				<a class="navbar-brand" href="#home">Drill</a>
+				<a class="navbar-brand" href="/profile">Drill</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -45,20 +45,20 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Name" required  >
+							<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Name" value="<%=user.userdetails.firstname%>" required  >
 							<span class="input-group-addon" style="border: 0; background: #DEF2FF"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter Phone Number" required  >	
+							<input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter Phone Number" value="<%=user.userdetails.phno%>" required  >	
 							<span class="input-group-addon" style="border: 0; background: #DEF2FF"></span>
 
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<input type="url" class="form-control" id="github" name="github" placeholder="Enter Github URL	" required  >
+							<input type="url" class="form-control" id="github" name="github" placeholder="Enter Github URL" value="<%=user.userdetails.github%>" required  >
 							<span class="input-group-addon" style="border: 0; background: #DEF2FF"></span>
 						</div>
 					</div>

@@ -64,13 +64,14 @@
             </div> <!-- cd-timeline-img -->
             
 			<% } %>
-
+            
+            <%if(user.email==drill.user){%>
             <div class="cd-timeline-content">
                 <button data-toggle="collapse" data-target="#demo" class="btn wow tada btn-primary ">Add More</button>
                 <div id="demo" class="collapse">
             <form role="add"  method="post" name="add" action="/add_node" style="margin-top:10px;">
                 <div class="col-md-12">
-                <input type="text" id="id" name="id" value="<%=drill.id%>" style="display:none;">
+                <input type="text" id="id" name="id" value="<%=drill.id%>" style="display:;">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" id="day" name="day" placeholder="Day" required  >
@@ -95,6 +96,7 @@
             </form>
                 </div>
             </div>
+            <%}%>
         </div>
 
     </section> <!-- cd-timeline -->

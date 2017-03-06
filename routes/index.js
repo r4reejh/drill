@@ -49,7 +49,7 @@ router.post('/login', passport.authenticate('local-login', {
 });*/
 
 router.get('/about',isLoggedIn,function(req,res){
-	res.render('about.ejs');
+	res.render('about.ejs',{user:req.user});
 });
 
 router.post('/signup2',function(req,res){
@@ -182,7 +182,7 @@ router.post('/publish',function(req,res){
 router.get('/drill/:id',function(req,res){
 	var id=req.params.id;
 	D.findById(id,function(err,obj){
-		res.render('drill.ejs',{drill:obj});
+		res.render('drill.ejs',{drill:obj,user:req.user});
 		//res.json(obj);
 	});
 });
