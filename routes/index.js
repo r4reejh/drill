@@ -98,7 +98,7 @@ router.post('/create_drill',function(req,res){
 					console.log(req.user);
 					//---------UNCOMMENT ONCE EJS AVAILABLE---------------------
 					//res.render('drill.ejs',{drill:obj});
-					res.render('drill.ejs',{drill:obj});
+					res.render('drill.ejs',{drill:obj,user:req.user});
 				});
 			});
 	});
@@ -116,7 +116,7 @@ router.post('/add_node',function(req,res){
 	D.findById(x.id,function(err,obj){
 		obj.nodes.push({day:x.day,description:x.description,links:x.links});
 		obj.save(function(err,doc){
-		res.render('drill.ejs',{drill:doc});
+		res.render('drill.ejs',{drill:doc,user:req.user});
 		//res.send("success");
 	});
 });
