@@ -37,7 +37,7 @@
                 <svg class="cd-timeline-img" style="height: 200px;" viewbox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
                       <defs>
                         <pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
-                          <image xlink:href="/img/profile-picture.jpg" x="-25" width="150" height="100" />
+                           <image xlink:href="/img/profile-picture.jpg" x="-25" width="150" height="100" />
                         </pattern>
                       </defs>
                       <polygon points="50 1 95 25 95 75 50 99 5 75 5 25" fill="#DEF2FF"/>
@@ -47,7 +47,15 @@
            <% for(var i=0; i<drill.nodes.length; i++) {%>
 			<div class="cd-timeline-content">
                 <h3><%=drill.nodes[i]["day"]%></h3>
-                <p style="white-space: pre-wrap;"><%-drill.nodes[i]["description"]%></p>
+                <%var x=drill.nodes[i]["description"].split(/\r\n/)%>
+                <% for(var kk=0;kk<x.length;kk++){%>
+					<%if(x[kk][0]+x[kk][1]=='<a'){%>
+						<%var pos=x[kk].indexOf('</a>')%>
+						<p style="white-space: pre-wrap;"><%-x[kk].substring(0,pos+4)%></p>
+					<% } else {%>
+						<%=x[kk]%><br>
+					<% } %>
+				<% } %>
             </div> <!-- cd-timeline-content -->
         </div> <!-- cd-timeline-block -->
 

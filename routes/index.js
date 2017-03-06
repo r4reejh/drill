@@ -113,13 +113,15 @@ router.post('/add_node',function(req,res){
 	var x=req.body;
 	console.log(x);
 	x.description = Autolinker.link(x.description);
-	D.findById(x.id,function(err,obj){
-		obj.nodes.push({day:x.day,description:x.description,links:x.links});
-		obj.save(function(err,doc){
-		res.render('drill.ejs',{drill:doc,user:req.user});
-		//res.send("success");
-	});
-});
+	var a=x.description.trim().split(/\r\n/);
+	console.log(a);
+		D.findById(x.id,function(err,obj){
+			obj.nodes.push({day:x.day,description:x.description,links:x.links});
+			obj.save(function(err,doc){
+			res.render('drill.ejs',{drill:doc,user:req.user});
+			//res.send("success");
+			});
+		});
 });
 
 
@@ -277,3 +279,6 @@ function addHashes(hashes,drill_id){
 		});
 	});
 }
+
+
+
