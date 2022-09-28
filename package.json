@@ -3,26 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
-    "autolinker": "^1.4.2",
+    "autolinker": "^3.16.1",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "~1.15.1",
+    "body-parser": "~1.18.2",
     "connect-busboy": "0.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
+    "debug": "~2.6.9",
     "ejs": "^3.1.6",
-    "express": "~4.13.4",
-    "express-fileupload": "^0.1.1",
+    "express": "~4.16.0",
+    "express-fileupload": "^1.1.10",
     "express-session": "^1.15.1",
     "formidable": "^3.2.4",
     "jade": "~1.11.0",
     "jquery": "^3.1.1",
-    "mongoose": "^4.8.5",
-    "morgan": "~1.7.0",
+    "mongoose": "^5.13.15",
+    "morgan": "~1.9.1",
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.0"
-  }
+    "serve-favicon": "~2.4.5",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
